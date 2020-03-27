@@ -4,12 +4,16 @@ let baseUrl = "/api"
 
 export const companiesApi ={
     get(){
-        alert("get")
-        return axios.get(`${baseUrl}/comopanies`)
+        return axios.get(`${baseUrl}/companyes`)
             .then(resoponce=>{
                 return resoponce.data
             })
-    }
+    },
+    // add(data){
+    //     return axios.post('/api/',{name:'test'})
+    //     alert("addinng");
+    //
+    // }
 }
 
 
