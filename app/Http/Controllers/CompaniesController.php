@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Companies;
+use App\Companyes;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -14,7 +14,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies= Companies::all();
+        $companies= Companyes::all();
         return  $companies;
     }
 
@@ -36,16 +36,21 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Companyes();
+        $company->name = $request->name;
+        $company->email = $request->email;
+        $company->logo = $request->logo;
+        $company->site = $request->site;
+         $company->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Companies  $companies
+     * @param  \App\Companyes  $companyes
      * @return \Illuminate\Http\Response
      */
-    public function show(Companies $companies)
+    public function show(Companyes $companyes)
     {
         //
     }
@@ -53,10 +58,10 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Companies  $companies
+     * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Companies $companies)
+    public function edit(Companyes $companies)
     {
         //
     }
@@ -65,10 +70,10 @@ class CompaniesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Companies  $companies
+     * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Companies $companies)
+    public function update(Request $request, Companyes $companies)
     {
         //
     }
@@ -76,11 +81,11 @@ class CompaniesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Companies  $companies
+     * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Companies $companies)
+    public function destroy(Companyes $companies)
     {
-        //
+        $company = Companyes::destroy($companies);
     }
 }

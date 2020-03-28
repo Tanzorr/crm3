@@ -5,6 +5,7 @@ import Header from "./Header";
 import Companyes from "./Companyes";
 import Emploees from "./Emploees";
 import Footer from "./Footer";
+import AddCompany from "./formCompany";
 
 
 
@@ -16,6 +17,7 @@ const AppContainer =()=>{
                 <Header/>
                 <Route path='/comopanies' component={Companyes}/>
                 <Route path='/emploees' component={Emploees}/>
+                <Route path='/formCompany' component={AddCompany}/>
             </Container>
 
         </Router>

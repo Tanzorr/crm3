@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Companies;
+use App\Companyes;
 
 class CompaniesController extends Controller
 {
@@ -36,7 +36,7 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Companies();
+        $company = new Companyes();
         $company->name = $request->name;
         $company->save();
     }

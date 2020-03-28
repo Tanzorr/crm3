@@ -5,22 +5,28 @@ const ADD_COMPANIE ="ADD_COMPANIE"
 
 
 const initialState={
-    companyes:[]
+    companyes:[
+        {   id:1,
+            name:"",
+            email:"",
+            logo:"",
+            site:""
+        }
+
+    ]
 }
 
 
 
 const companyReducer=(state=initialState, action)=>{
+    console.log("action",action)
     switch (action.type) {
         case SET_COMPANIES:
             return {
                 ...state,
                 companyes: action.companyes
             }
-        case ADD_COMPANIE :
-            return {
-                ...state.companies.push(action.company)
-            }
+
 
 
 
@@ -36,6 +42,7 @@ const setCompaniesAC =(companyes)=>{
         }
     }
 const addCompaniesAC =(company)=>{
+
     return {
         type:ADD_COMPANIE,
         company
@@ -52,10 +59,11 @@ export const getCompanyes =()=>{
     }
 }
 
-export const addCompani =(data)=>{
+export const addCompany =(data)=>{
     return async (dispatch)=>{
+
         await  companiesApi.add(data)
-        dispatch(addCompaniesAC(data))
+       dispatch(addCompaniesAC(data))
     }
 }
 

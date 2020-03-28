@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
-import {getCompanyes} from "../redux/companyReducer";
+import {addCompany, getCompanyes} from "../redux/companyReducer";
 import Company from "./Company";
+import AppContainer from "./AppContainer";
+import AddCompany from "./formCompany";
+import {NavLink} from "react-router-dom";
 
 
 
 
 
 
-const Companyes  =({getCompanyes, companyes},...props)=>{
+const Companyes  =({getCompanyes, addCompany, companyes},...props)=>{
     console.log("company props",companyes)
     useEffect(()=>{
         getCompanyes()
@@ -18,6 +21,7 @@ const Companyes  =({getCompanyes, companyes},...props)=>{
 
     return<div>
        <h1>Componies</h1>
+        <NavLink to='/addCompany'>Add company</NavLink>
         {commpayeslist}
     </div>
 }
@@ -31,4 +35,4 @@ let mapStateToProps =(state)=>{
 
 }
 
-export default connect(mapStateToProps,{getCompanyes })(Companyes)
+export default connect(mapStateToProps,{getCompanyes, addCompany })(Companyes)

@@ -9,11 +9,15 @@ export const companiesApi ={
                 return resoponce.data
             })
     },
-    // add(data){
-    //     return axios.post('/api/',{name:'test'})
-    //     alert("addinng");
-    //
-    // }
+    add(data){
+        return axios.post(`${baseUrl}/companyes`,data)
+            .then(responce=> console.log("responce data",data))
+    },
+
+    delete(){
+
+    }
+
 }
 
 
