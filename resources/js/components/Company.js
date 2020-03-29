@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 
 
-const Company =({c})=>{
+const Company =({c,del})=>{
 
     return <div>
         <div className="containr">
@@ -12,8 +12,8 @@ const Company =({c})=>{
                 <div>{c.email}</div>
                 <div>{c.logo}</div>
                 <div>{c.site}</div>
-                {/*<div><NavLink clasName="btn-primery">Eddit</NavLink></div>*/}
-                {/*<div><NavLink clasName="btn-dangers">Delete</NavLink></div>*/}
+                <div><a className="btn-danger p-1" onClick={()=>{del(c.id)}} >Delete</a></div>
+
             </div>
         </div>
     </div>

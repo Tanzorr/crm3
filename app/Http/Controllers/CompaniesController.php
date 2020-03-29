@@ -14,8 +14,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies= Companyes::all();
-        return  $companies;
+        $companyes= Companyes::all();
+        return  $companyes;
     }
 
     /**
@@ -58,10 +58,10 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Companyes  $companies
+     * @param  \App\Companyes  $companyes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Companyes $companies)
+    public function edit(Companyes $companyes)
     {
         //
     }
@@ -73,7 +73,7 @@ class CompaniesController extends Controller
      * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Companyes $companies)
+    public function update(Request $request, Companyes $companyes)
     {
         //
     }
@@ -84,8 +84,9 @@ class CompaniesController extends Controller
      * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Companyes $companies)
+    public function destroy( $id)
     {
-        $company = Companyes::destroy($companies);
+        //dd($id);
+        $company = Companyes::destroy($id);
     }
 }

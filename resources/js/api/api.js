@@ -14,8 +14,9 @@ export const companiesApi ={
             .then(responce=> console.log("responce data",data))
     },
 
-    delete(){
+    delete(id){
 
+        return axios.delete(`${baseUrl}/companyes/${id}`).then(response=> console.log("responce data", response))
     }
 
 }
