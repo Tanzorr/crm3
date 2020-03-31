@@ -14,9 +14,10 @@ export const companiesApi ={
             .then(responce=> console.log("responce data",data))
     },
 
-    edit(id){
-        return axios.put(`${baseUrl}/compayes/${id}`)
-            .then(responce=> console.log("responce data",data))
+    edit(id,data){
+        console.log("editDatainApi",data)
+        return axios.put(`/api/companyes/${id}`,data).then(res=>console.log("res edit",res))
+
     },
 
 

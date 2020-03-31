@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from "react";
 import {connect} from "react-redux";
-import {getCompany} from "../redux/companyReducer";
+import {editSingleCompany, getCompany} from "../redux/companyReducer";
 
 
 const editCompany =(props)=>{
     let [Name, setName]=useState("")
     let [Email, setEmail]=useState("")
-   // let [Logo, setLogo]=useState("")
+    let [Logo, setLogo]=useState("")
     let [Site, setSite]=useState("")
     let id =props.match.params.companyId
 
@@ -23,7 +23,17 @@ const editCompany =(props)=>{
 
 
 
-
+    let sendCahges=(e)=>{
+        e.preventDefault()
+            props.editSingleCompany(id,{
+                id:id,
+                name:Name,
+                emeil:Email,
+                logo:Logo,
+                site:Site
+            })
+       // history.push("/comopanies")
+    }
 
    let getDefalutData = (data)=>{
         setName(data.name)
@@ -34,6 +44,8 @@ const editCompany =(props)=>{
 useEffect(()=>{
    getDefalutData(company)
 },[company])
+
+
 
 
 
@@ -65,7 +77,7 @@ useEffect(()=>{
                 </div>
             </div>
             <div>
-                <button className=" btn btn-success" >Edit</button>
+                <button className=" btn btn-success" onClick={sendCahges}>Edit</button>
             </div>
         </form>
     </div>
@@ -83,4 +95,4 @@ let mapStateToProps =(state)=>{
 }
 
 
-export default  connect(mapStateToProps,{getCompany})(editCompany);
+export default  connect(mapStateToProps,{getCompany,editSingleCompany})(editCompany);

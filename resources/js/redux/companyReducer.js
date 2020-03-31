@@ -115,10 +115,10 @@ export const addCompany =(data)=>{
     }
 }
 
-export const  editCompany=(id)=>{
-    return async (dispatch)=>{
-        await companiesApi.edit(id)
-        dispatch(getCompanyes())
+export const  editSingleCompany=(id,data)=>{
+    return async ()=>{
+        await companiesApi.edit(id,data)
+          // getCompanyes()
 
     }
 }

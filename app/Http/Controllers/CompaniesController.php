@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Companyes;
+use DemeterChain\C;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -63,7 +64,7 @@ class CompaniesController extends Controller
      */
     public function edit(Companyes $companyes)
     {
-        //
+        dd(34);
     }
 
     /**
@@ -73,9 +74,14 @@ class CompaniesController extends Controller
      * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Companyes $companyes)
+    public function update(Request $request,$id)
     {
-        //
+        $company = Companyes::find($id);
+       $company->name=$request->name;
+       $company->email=$request->emeil;
+       $company->logo=$request->logo;
+       $company->site=$request->site;
+       $company->save();
     }
 
     /**
