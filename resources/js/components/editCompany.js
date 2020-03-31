@@ -1,15 +1,22 @@
-import React, {useState} from "react";
+import React,{useState,useEffect} from "react";
 import {connect} from "react-redux";
-import {addCompany} from "../redux/companyReducer";
+import {getCompany} from "../redux/companyReducer";
 
 
-const FormCompany =({addCompany, history},...props)=>{
+const editCompany =(props)=>{
 
-    console.log("history", history)
+    let id =props.match.params.companyId
 
+    console.log("id",id)
 
-    let location =  history.location.pathname;
-    console.log("formProps", location)
+    useEffect(()=>{
+        props.getCompany(id)
+    },[])
+
+    let company =props.copmpany
+
+    console.log("editProps",props.copmpany)
+    console.log("company",company.name)
 
 
 
@@ -18,22 +25,18 @@ const FormCompany =({addCompany, history},...props)=>{
     let [Logo, setLogo]=useState("")
     let [Site, setSite]=useState("")
 
-    let sendData = (e)=>{
-        e.preventDefault();
-        addCompany({
-            name:Name,
-            email:Email,
-            logo:Logo,
-            site:Site }   );
-
-        setName("")
-        setEmail("")
-        setLogo("")
-        setSite("")
-
-       history.push("/comopanies")
-
+   let getDefalutData = (data)=>{
+        setName(data.name)
+        setEmail(data.email)
+        setLogo(data.logo)
+        setSite(data.site)
     }
+useEffect(()=>{
+   getDefalutData(company)
+},[id])
+
+
+
 
     return <div>
         <form>
@@ -62,17 +65,22 @@ const FormCompany =({addCompany, history},...props)=>{
                 </div>
             </div>
             <div>
-                <button className=" btn btn-success" onClick={sendData}>Send</button>
+                <button className=" btn btn-success" >Edit</button>
             </div>
         </form>
     </div>
+
 }
 
-
-let mapStateToProps =(store)=>{
+let mapStateToProps =(state)=>{
     return{
-        store
+        state,
+        copmpany:state.companyReducer.company
+
+
+
     }
 }
 
-export default connect(mapStateToProps,{addCompany})(FormCompany)
+
+export default  connect(mapStateToProps,{getCompany})(editCompany);

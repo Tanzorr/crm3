@@ -12,7 +12,7 @@ import {NavLink} from "react-router-dom";
 
 
 const Companyes  =({getCompanyes, deleteCompany, companyes},...props)=>{
-    console.log("company props",companyes)
+
     useEffect(()=>{
         getCompanyes()
     },[])
@@ -21,7 +21,7 @@ const Companyes  =({getCompanyes, deleteCompany, companyes},...props)=>{
 
     return<div>
        <h1>Componies</h1>
-        <NavLink to='/formCompany'>Add company</NavLink>
+        <NavLink to='/add'>Add company</NavLink>
         {commpayeslist}
     </div>
 }

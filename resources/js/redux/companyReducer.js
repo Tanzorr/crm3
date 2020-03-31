@@ -1,8 +1,10 @@
 import {companiesApi }from "../api/api"
 
 const  SET_COMPANIES = "SET_COMPANIES"
+const   SET_COMPANY = "SET_COMPANY"
 const ADD_COMPANIE ="ADD_COMPANIE"
 const DELETE_COMPANY="DELETE_COMPANY"
+const EDIT_COMPANY="EDIT_COMPANY"
 
 
 const initialState={
@@ -12,16 +14,15 @@ const initialState={
             email:"",
             logo:"",
             site:""
-        }
-
-    ]
+        }],
+    company:{}
 }
 
 
 
 const companyReducer=(state=initialState, action)=>{
     console.log("state",state)
-    console.log("action",action.type)
+    console.log("action",action)
     switch (action.type) {
         case DELETE_COMPANY:
 
@@ -29,7 +30,7 @@ const companyReducer=(state=initialState, action)=>{
                 ...state,
                 companyes: state.companyes.filter(
                     (c)=>{
-                        if (c!== action.id){
+                        if (c.id!== action.id){
                             return c
                         }
                     }
@@ -41,18 +42,34 @@ const companyReducer=(state=initialState, action)=>{
                 companyes: action.companyes
             }
 
+        case  SET_COMPANY:
 
+            return {
+                ...state,
+                company:state.companyes.filter((c)=>{
+                    if(c.id==action.id){
+                        return c;
+                    }
+                   })[0]
+            }
             default:
             return state
     }
 }
 
-const setCompaniesAC =(companyes)=>{
+const setCompanyesAC =(companyes)=>{
     return{
         type:SET_COMPANIES,
         companyes
         }
     }
+
+const setCompanyAC =(id)=>{
+    return{
+        type:SET_COMPANY,
+        id
+    }
+}
 const addCompaniesAC =(company)=>{
     return {
         type:ADD_COMPANIE,
@@ -67,14 +84,28 @@ const deleteCompaniesAC =(id)=>{
     }
 }
 
+const editCompanyAC =(id)=>{
+    return{
+        type:EDIT_COMPANY,
+        id
+    }
+}
+
 
 
 export const getCompanyes =()=>{
     return async (dispatch)=>{
         let data = await companiesApi.get()
         console.log("dataCompany", data);
-        dispatch(setCompaniesAC(data))
+        dispatch(setCompanyesAC(data))
     }
+}
+
+export const  getCompany =(id)=>{
+    return  async (dispatch)=>{
+        dispatch(setCompanyAC(id))
+    }
+
 }
 
 export const addCompany =(data)=>{
@@ -84,9 +115,16 @@ export const addCompany =(data)=>{
     }
 }
 
+export const  editCompany=(id)=>{
+    return async (dispatch)=>{
+        await companiesApi.edit(id)
+        dispatch(getCompanyes())
+
+    }
+}
+
 export const deleteCompany = (id)=>{
     return async (dispatch)=>{
-        await companiesApi.delete(id)
         dispatch(deleteCompaniesAC(id))
         dispatch(getCompanyes())
     }

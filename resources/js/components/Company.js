@@ -3,16 +3,19 @@ import {NavLink} from "react-router-dom";
 
 
 
-const Company =({c,del})=>{
+const Company =({c,del, ...props})=>{
+
+
 
     return <div>
         <div className="containr">
-            <div className="row justify-content-around">
+            <div className="row justify-content-around mt-3">
                 <div>{c.name}</div>
                 <div>{c.email}</div>
                 <div>{c.logo}</div>
                 <div>{c.site}</div>
-                <div><a className="btn-danger p-1" onClick={()=>{del(c.id)}} >Delete</a></div>
+                <div><NavLink to={`/edit/${c.id}`} className="btn btn-primary p-1" >Edit</NavLink></div>
+                <div><a className="btn btn-danger p-1" onClick={()=>{del(c.id)}} >Delete</a></div>
 
             </div>
         </div>
