@@ -4,14 +4,17 @@ import {getCompany} from "../redux/companyReducer";
 
 
 const editCompany =(props)=>{
-
+    let [Name, setName]=useState("")
+    let [Email, setEmail]=useState("")
+   // let [Logo, setLogo]=useState("")
+    let [Site, setSite]=useState("")
     let id =props.match.params.companyId
 
     console.log("id",id)
 
     useEffect(()=>{
         props.getCompany(id)
-    },[])
+    },[id])
 
     let company =props.copmpany
 
@@ -20,20 +23,17 @@ const editCompany =(props)=>{
 
 
 
-    let [Name, setName]=useState("")
-    let [Email, setEmail]=useState("")
-    let [Logo, setLogo]=useState("")
-    let [Site, setSite]=useState("")
+
 
    let getDefalutData = (data)=>{
         setName(data.name)
         setEmail(data.email)
-        setLogo(data.logo)
+       // setLogo(data.logo)
         setSite(data.site)
     }
 useEffect(()=>{
    getDefalutData(company)
-},[id])
+},[company])
 
 
 
