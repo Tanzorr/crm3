@@ -125,7 +125,8 @@ export const  editSingleCompany=(id,data)=>{
 
 export const deleteCompany = (id)=>{
     return async (dispatch)=>{
-        dispatch(deleteCompaniesAC(id))
+        await companiesApi.delete(id)
+
         dispatch(getCompanyes())
     }
 }

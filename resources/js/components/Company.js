@@ -15,7 +15,7 @@ const Company =({c,del, ...props})=>{
                 <div>{c.logo}</div>
                 <div>{c.site}</div>
                 <div><NavLink to={`/edit/${c.id}`} className="btn btn-primary p-1" >Edit</NavLink></div>
-                <div><a className="btn btn-danger p-1" onClick={()=>{del(c.id)}} >Delete</a></div>
+                <div><button className="btn btn-danger p-1" onClick={()=>{del(c.id)}} >Delete</button></div>
 
             </div>
         </div>

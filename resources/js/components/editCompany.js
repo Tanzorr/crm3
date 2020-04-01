@@ -32,7 +32,7 @@ const editCompany =(props)=>{
                 logo:Logo,
                 site:Site
             })
-       // history.push("/comopanies")
+       props.history.push("/comopanies")
     }
 
    let getDefalutData = (data)=>{
