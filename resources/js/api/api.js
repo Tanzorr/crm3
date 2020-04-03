@@ -29,3 +29,12 @@ export const companiesApi ={
 }
 
 
+
+export const employeeApi={
+    get(){
+        return axios.get(`${baseUrl}/employees`)
+            .then(resoponce=>{
+                return resoponce.data
+            })
+    },
+}

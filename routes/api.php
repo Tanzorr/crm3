@@ -22,3 +22,4 @@ Route::get('/test', function () {
 });
 
 Route::resource('companies', 'CompaniesController');
+Route::resource('employees', 'EmployeeController');
