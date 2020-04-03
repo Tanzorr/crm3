@@ -2,14 +2,14 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from "redux-thunk";
 
-import companiReducer from "./companiReducer";
+import companyReducer from "./companyReducer";
 import emploeeReducer from "./emploeeReducer";
 
 
 
 
 let reducers= combineReducers({
-    companiReducer,
+    companyReducer: companyReducer,
     emploeeReducer
 })
 
