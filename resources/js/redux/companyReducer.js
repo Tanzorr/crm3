@@ -8,7 +8,7 @@ const EDIT_COMPANY="EDIT_COMPANY"
 
 
 const initialState={
-    companyes:[
+    companies:[
         {   id:1,
             name:"",
             email:"",
@@ -28,7 +28,7 @@ const companyReducer=(state=initialState, action)=>{
 
             return {
                 ...state,
-                companyes: state.companyes.filter(
+                companies: state.companies.filter(
                     (c)=>{
                         if (c.id!== action.id){
                             return c
@@ -39,14 +39,14 @@ const companyReducer=(state=initialState, action)=>{
         case SET_COMPANIES:
             return {
                 ...state,
-                companyes: action.companyes
+                companies: action.companies
             }
 
         case  SET_COMPANY:
 
             return {
                 ...state,
-                company:state.companyes.filter((c)=>{
+                company:state.companies.filter((c)=>{
                     if(c.id==action.id){
                         return c;
                     }
@@ -57,10 +57,10 @@ const companyReducer=(state=initialState, action)=>{
     }
 }
 
-const setCompanyesAC =(companyes)=>{
+const setCompaniesAC =(companies)=>{
     return{
         type:SET_COMPANIES,
-        companyes
+        companies
         }
     }
 
@@ -93,11 +93,11 @@ const editCompanyAC =(id)=>{
 
 
 
-export const getCompanyes =()=>{
+export const getCompanies =()=>{
     return async (dispatch)=>{
         let data = await companiesApi.get()
         console.log("dataCompany", data);
-        dispatch(setCompanyesAC(data))
+        dispatch(setCompaniesAC(data))
     }
 }
 
@@ -118,7 +118,7 @@ export const addCompany =(data)=>{
 export const  editSingleCompany=(id,data)=>{
     return async ()=>{
         await companiesApi.edit(id,data)
-          // getCompanyes()
+          // getCompanies()
 
     }
 }
@@ -127,7 +127,7 @@ export const deleteCompany = (id)=>{
     return async (dispatch)=>{
         await companiesApi.delete(id)
 
-        dispatch(getCompanyes())
+        dispatch(getCompanies())
     }
 }
 

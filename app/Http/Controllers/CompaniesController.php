@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Companyes;
+use App\Company;
 use DemeterChain\C;
 use Illuminate\Http\Request;
 
@@ -15,8 +15,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companyes= Companyes::all();
-        return  $companyes;
+        $companies= Company::all();
+        return  $companies;
     }
 
     /**
@@ -37,7 +37,7 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Companyes();
+        $company = new Company();
         $company->name = $request->name;
         $company->email = $request->email;
         $company->logo = $request->logo;
@@ -48,10 +48,10 @@ class CompaniesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Companyes  $companyes
+     * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function show(Companyes $companyes)
+    public function show(Company $companies)
     {
         //
     }
@@ -59,10 +59,10 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Companyes  $companyes
+     * @param  \App\Companyes  $companies
      * @return \Illuminate\Http\Response
      */
-    public function edit(Companyes $companyes)
+    public function edit(Company $company)
     {
         dd(34);
     }
@@ -76,7 +76,7 @@ class CompaniesController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $company = Companyes::find($id);
+        $company = Company::find($id);
        $company->name=$request->name;
        $company->email=$request->emeil;
        $company->logo=$request->logo;
@@ -87,12 +87,12 @@ class CompaniesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Companyes  $companies
+     * @param  \App\Company  $companies
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id)
     {
         //dd($id);
-        $company = Companyes::destroy($id);
+        $company = Company::destroy($id);
     }
 }

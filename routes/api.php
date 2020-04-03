@@ -21,4 +21,4 @@ Route::get('/test', function () {
     return ['name'=>"something"];
 });
 
-Route::resource('companyes', 'CompaniesController');
+Route::resource('companies', 'CompaniesController');

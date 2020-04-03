@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Container} from "@material-ui/core";
 import Header from "./Header";
-import Companyes from "./Companyes";
+import Companyes from "./Companies";
 import Emploees from "./Emploees";
 import Footer from "./Footer";
 import AddCompany from "./formCompany";
