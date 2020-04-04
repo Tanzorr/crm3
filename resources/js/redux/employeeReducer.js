@@ -41,15 +41,16 @@ const setEmployeesAC =(employees,)=>{
 
 export const getEmployees =()=>{
     return async (dispatch)=>{
-        let data = await employeeApi.get()
+        let data = await employeeApi.getAll()
         console.log("Employees data",data)
         dispatch(setEmployeesAC(data))
     }
 }
 
-export const getCompaniesName=(id)=>{
+export const addEmploee = (data)=>{
     return async (dispatch)=>{
-        let data = await companiesApi.getSingle(id)
+        await employeeApi.add(data)
+        getEmployees()
     }
 }
 

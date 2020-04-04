@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getEmployees} from "../../redux/employeeReducer";
 import Employee from "./Employee";
 import {getCompanies} from "../../redux/companyReducer";
+import FormEmploee from "./FormEmploee";
 
 
 
@@ -23,6 +24,8 @@ const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
 
     return<div>
         Emploees
+
+        <FormEmploee/>
 
         {
             employees.map((em)=>{
