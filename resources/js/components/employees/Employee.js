@@ -14,7 +14,7 @@ const Employee =({em,compN})=>{
                     <div>{compN}</div>
                     <div>{em.email}</div>
                     <div>{em.phone_number}</div>
-                    <div><a>Edit</a></div>
+                    <div><a className="btn btn-primary">Edit</a></div>
                     <div><button className="btn btn-danger">Delete</button></div>
 
                 </div>
