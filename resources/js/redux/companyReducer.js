@@ -95,7 +95,7 @@ const editCompanyAC =(id)=>{
 
 export const getCompanies =()=>{
     return async (dispatch)=>{
-        let data = await companiesApi.get()
+        let data = await companiesApi.getAll()
         console.log("dataCompany", data);
         dispatch(setCompaniesAC(data))
     }

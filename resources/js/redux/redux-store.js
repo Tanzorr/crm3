@@ -3,14 +3,14 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from "redux-thunk";
 
 import companyReducer from "./companyReducer";
-import emploeeReducer from "./emploeeReducer";
+import employeeReducer from "./employeeReducer";
 
 
 
 
 let reducers= combineReducers({
     companyReducer: companyReducer,
-    emploeeReducer
+    employeeReducer
 })
 
 let store = createStore(reducers,composeWithDevTools(applyMiddleware(thunkMiddleware)))
