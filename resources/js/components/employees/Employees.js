@@ -2,31 +2,51 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {getEmployees} from "../../redux/employeeReducer";
 import Employee from "./Employee";
+import {getCompanies} from "../../redux/companyReducer";
 
 
-const Employees =({getEmployees,employees},props)=>{
+
+const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
     useEffect(()=>{
         getEmployees()
     },[])
 
-    console.log("Employee props", employees)
+    useEffect(()=>{
+        getCompanies()
+    },[])
 
-    let employeesList = employees.map((em)=>{
-        return <Employee key={em.id} em={em}/>
-    })
+
+
+
+
+
 
     return<div>
         Emploees
-        {employeesList}
+
+        {
+            employees.map((em)=>{
+                return companies.map((com)=>{
+                    if(com.id === em.company_id){
+
+                        return <Employee key={Math.floor(Math.random()*3000)} em={em} compN={com.name}/>
+                    }
+                    return <Employee key={Math.floor(Math.random()*3000)}  em={em} compN="unimploiment"/>
+
+                })
+            })
+        }
     </div>
 }
 
 let mapStateToProps =(state)=>{
     return{
         state,
-        employees:state.employeeReducer.employees
+        employees:state.employeeReducer.employees,
+        companies:state.companyReducer.companies
+
     }
 }
 
 
-export default connect(mapStateToProps, {getEmployees})(Employees)
+export default connect(mapStateToProps, {getEmployees,getCompanies })(Employees)

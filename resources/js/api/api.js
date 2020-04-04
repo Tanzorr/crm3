@@ -3,12 +3,20 @@ import * as axios from "axios";
 let baseUrl = "/api"
 
 export const companiesApi ={
-    get(){
+    getAll(){
         return axios.get(`${baseUrl}/companies`)
             .then(resoponce=>{
                 return resoponce.data
             })
     },
+
+    getSingle(id){
+        return axios.get(`${baseUrl}/companies/${id}`)
+            .then(resoponce=>{
+                return resoponce.data
+            })
+    },
+
     add(data){
         return axios.post(`${baseUrl}/companies`,data)
             .then(responce=> console.log("responce data",data))
@@ -19,6 +27,7 @@ export const companiesApi ={
         return axios.put(`/api/companies/${id}`,data).then(res=>console.log("res edit",res))
 
     },
+
 
 
     delete(id){

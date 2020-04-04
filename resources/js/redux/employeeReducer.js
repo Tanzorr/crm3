@@ -1,4 +1,4 @@
-import {employeeApi} from "../api/api";
+import {companiesApi, employeeApi} from "../api/api";
 
 const SET_EMPLOYEE='SET_EMPLOYEE'
 
@@ -9,6 +9,7 @@ const initialState= {
         id: null,
         firstName: null,
         lastName: null,
+        companyName:null,
         companyId: null,
         email: null,
         phone: null
@@ -30,7 +31,7 @@ const employeeReducer=(state=initialState, action)=>{
 }
 
 
-const setEmployeesAC =(employees)=>{
+const setEmployeesAC =(employees,)=>{
     return{
         type:SET_EMPLOYEE,
         employees
@@ -43,6 +44,12 @@ export const getEmployees =()=>{
         let data = await employeeApi.get()
         console.log("Employees data",data)
         dispatch(setEmployeesAC(data))
+    }
+}
+
+export const getCompaniesName=(id)=>{
+    return async (dispatch)=>{
+        let data = await companiesApi.getSingle(id)
     }
 }
 
