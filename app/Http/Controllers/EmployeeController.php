@@ -38,7 +38,15 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // dd($request);
+        $employee = new Employee();
+        $employee->FirstName = $request->FirstName;
+        $employee->LastName = $request->LastName;
+        $employee->company_id = $request->coampany_id;
+        $employee->email = $request->email;
+        $employee->phone_number = $request->phone_number;
+
+        $employee->save();
     }
 
     /**

@@ -64,7 +64,7 @@ class CompaniesController extends Controller
      */
     public function edit(Company $company)
     {
-        dd(34);
+
     }
 
     /**

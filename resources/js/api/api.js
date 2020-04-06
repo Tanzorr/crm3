@@ -40,10 +40,16 @@ export const companiesApi ={
 
 
 export const employeeApi={
-    get(){
+    getAll(){
         return axios.get(`${baseUrl}/employees`)
             .then(resoponce=>{
                 return resoponce.data
             })
     },
+
+    add(data){
+        return axios.post(`${baseUrl}/employees`,data)
+            .then(responce=> console.log("responce data",data))
+    }
+
 }
