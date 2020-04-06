@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {connect} from "react-redux";
 import {addCompany, deleteCompany, getCompanies} from "../../redux/companyReducer";
 import Company from "./Company";
-import AppContainer from "../AppContainer";
-import AddCompany from "./formCompany";
 import {NavLink} from "react-router-dom";
 
 
@@ -21,7 +19,7 @@ const Companies  =({getCompanies, deleteCompany, companies}, ...props)=>{
 
     return<div>
        <h1>Componies</h1>
-        <NavLink to='/add'>Add company</NavLink>
+        <NavLink to='/comopany/add'>Add company</NavLink>
         {commpayeslist}
     </div>
 }

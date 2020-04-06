@@ -4,6 +4,7 @@ import {getEmployees} from "../../redux/employeeReducer";
 import Employee from "./Employee";
 import {getCompanies} from "../../redux/companyReducer";
 import FormEmploee from "./FormEmploee";
+import {NavLink} from "react-router-dom";
 
 
 
@@ -12,9 +13,6 @@ const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
         getEmployees()
     },[])
 
-    useEffect(()=>{
-        getCompanies()
-    },[])
 
 
 
@@ -25,7 +23,7 @@ const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
     return<div>
         Emploees
 
-        <FormEmploee/>
+        <NavLink to='/employees/add'>Add Employee</NavLink>
 
         {
             employees.map((em)=>{
@@ -34,7 +32,7 @@ const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
 
                         return <Employee key={Math.floor(Math.random()*3000)} em={em} compN={com.name}/>
                     }
-                    return <Employee key={Math.floor(Math.random()*3000)}  em={em} compN="unimploiment"/>
+                   // return <Employee key={Math.floor(Math.random()*3000)}  em={em} compN="unimploiment"/>
 
                 })
             })
