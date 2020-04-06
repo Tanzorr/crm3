@@ -1,4 +1,5 @@
 import {companiesApi, employeeApi} from "../api/api";
+import {getCompanies} from "./companyReducer";
 
 const SET_EMPLOYEE='SET_EMPLOYEE'
 
@@ -51,6 +52,14 @@ export const addEmploee = (data)=>{
     return async (dispatch)=>{
         await employeeApi.add(data)
         getEmployees()
+    }
+}
+
+export const deleteEmployee = (id)=>{
+    return async (dispatch)=>{
+        await employeeApi.delete(id)
+
+       dispatch(getEmployees())
     }
 }
 

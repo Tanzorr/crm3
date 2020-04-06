@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {getEmployees} from "../../redux/employeeReducer";
+import {deleteEmployee, getEmployees} from "../../redux/employeeReducer";
 import Employee from "./Employee";
 import {getCompanies} from "../../redux/companyReducer";
 import FormEmploee from "./FormEmploee";
@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 
 
 
-const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
+const Employees =({getEmployees,getCompanies,deleteEmployee, employees,companies},...props)=>{
     useEffect(()=>{
         getEmployees()
     },[])
@@ -30,7 +30,7 @@ const Employees =({getEmployees,getCompanies, employees,companies},...props)=>{
                 return companies.map((com)=>{
                     if(com.id === em.company_id){
 
-                        return <Employee key={Math.floor(Math.random()*3000)} em={em} compN={com.name}/>
+                        return <Employee key={Math.floor(Math.random()*3000)} em={em} compN={com.name} del={deleteEmployee}/>
                     }
                    // return <Employee key={Math.floor(Math.random()*3000)}  em={em} compN="unimploiment"/>
 
@@ -50,4 +50,4 @@ let mapStateToProps =(state)=>{
 }
 
 
-export default connect(mapStateToProps, {getEmployees,getCompanies })(Employees)
+export default connect(mapStateToProps, {getEmployees,getCompanies , deleteEmployee})(Employees)

@@ -89,8 +89,9 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $emploee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $emploee)
+    public function destroy($id)
     {
-        //
+
+        Employee::destroy($id);
     }
 }
