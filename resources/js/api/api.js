@@ -50,6 +50,11 @@ export const employeeApi={
     add(data){
         return axios.post(`${baseUrl}/employees`,data)
             .then(responce=> console.log("responce data",data))
+    },
+
+    delete(id){
+
+        return axios.delete(`${baseUrl}/employees/${id}`).then(response=> console.log("responce data", response))
     }
 
 }

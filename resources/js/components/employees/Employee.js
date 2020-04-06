@@ -4,7 +4,8 @@ import React from "react";
 
 
 
-const Employee =({em,compN})=>{
+
+const Employee =({em,compN,del})=>{
     return <div>
 
             <div className="containr">
@@ -15,7 +16,7 @@ const Employee =({em,compN})=>{
                     <div>{em.email}</div>
                     <div>{em.phone_number}</div>
                     <div><a className="btn btn-primary">Edit</a></div>
-                    <div><button className="btn btn-danger">Delete</button></div>
+                    <div><button onClick={()=>{del(em.id)}} className="btn btn-danger">Delete</button></div>
 
                 </div>
             </div>
