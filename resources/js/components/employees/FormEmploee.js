@@ -22,11 +22,11 @@ const FormEmploee =({ history, companies,getCompanies},...props)=>{
         value:1,
         label:"Company"
     })
-    let [CoampanyId, seCompanyId]=useState(1)
+    let [CompanyId, seCompanyId]=useState(1)
     let [Email, setEmail]=useState("")
     let [Phone, setPhone]=useState("")
 
-    console.log("companies id", CoampanyId)
+    console.log("companies id", CompanyId)
 
     let sendData = (e)=>{
         e.preventDefault();
@@ -72,13 +72,13 @@ const FormEmploee =({ history, companies,getCompanies},...props)=>{
             <div className="form-group row">
                 <label htmlFor="Name" className="col-sm-2 col-form-label">First Name</label>
                 <div className="col-sm-10">
-                    <input type="text"  onChange={(e)=>{setFistName(e.target.value)}} value={FirstName} placeholder="name" className="form-control" id="Name"/>
+                    <input type="text"  onChange={(e)=>{setFistName(e.target.value)}} value={FirstName} placeholder="First name" className="form-control" id="Name"/>
                 </div>
             </div>
             <div className="form-group row">
                 <label htmlFor="Name" className="col-sm-2 col-form-label">Last Name</label>
                 <div className="col-sm-10">
-                    <input type="text"  onChange={(e)=>{setLastName(e.target.value)}} value={LastName} placeholder="name" className="form-control" id="Name"/>
+                    <input type="text"  onChange={(e)=>{setLastName(e.target.value)}} value={LastName} placeholder="Last name" className="form-control" id="Name"/>
                 </div>
             </div>
             <div className="form-group row">

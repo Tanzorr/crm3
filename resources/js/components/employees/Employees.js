@@ -14,8 +14,30 @@ const Employees =({getEmployees,getCompanies,deleteEmployee, employees,companies
     },[])
 
 
+    useEffect(()=>{
+        getCompanies()
+    },[])
 
 
+    let companyName =(id)=>{
+        if(companies.length>0){
+            let fArr = companies.filter((c)=>{
+                if(c.id === id){
+                    return c
+                }
+            })
+
+                if(fArr.length>0){
+                    return fArr[0].name
+                }else{
+                    return "No company"
+                }
+
+        }
+
+    }
+
+   // console.log("companyName",companyName(1))
 
 
 
@@ -27,15 +49,10 @@ const Employees =({getEmployees,getCompanies,deleteEmployee, employees,companies
 
         {
             employees.map((em)=>{
-                return companies.map((com)=>{
-                    if(com.id === em.company_id){
 
-                        return <Employee key={Math.floor(Math.random()*3000)} em={em} compN={com.name} del={deleteEmployee}/>
-                    }
-                   // return <Employee key={Math.floor(Math.random()*3000)}  em={em} compN="unimploiment"/>
-
-                })
+                return <Employee key={em.id} em={em} compN={companyName(em.company_id)} del={deleteEmployee}/>
             })
+
         }
     </div>
 }

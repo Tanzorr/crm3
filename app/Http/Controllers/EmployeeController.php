@@ -38,7 +38,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request);
+
         $employee = new Employee();
         $employee->FirstName = $request->FirstName;
         $employee->LastName = $request->LastName;
@@ -78,9 +78,16 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $emploee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $emploee)
+    public function update(Request $request, $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->FirstName = $request->FirstName;
+        $employee->LastName = $request->LastName;
+        $employee->company_id= $request->company_id;
+        $employee->email = $request->email;
+        $employee->phone_number = $request->phone_number;
+        $employee->save();
+
     }
 
     /**

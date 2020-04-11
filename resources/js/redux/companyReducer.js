@@ -21,8 +21,6 @@ const initialState={
 
 
 const companyReducer=(state=initialState, action)=>{
-    console.log("state",state)
-    console.log("action",action)
     switch (action.type) {
         case DELETE_COMPANY:
 
@@ -96,7 +94,6 @@ const editCompanyAC =(id)=>{
 export const getCompanies =()=>{
     return async (dispatch)=>{
         let data = await companiesApi.getAll()
-        console.log("dataCompany", data);
         dispatch(setCompaniesAC(data))
     }
 }

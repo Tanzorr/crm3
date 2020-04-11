@@ -1,11 +1,12 @@
 import React from "react";
-
-
-
-
-
+import {NavLink} from "react-router-dom";
 
 const Employee =({em,compN,del})=>{
+
+
+
+
+
     return <div>
 
             <div className="containr">
@@ -15,7 +16,7 @@ const Employee =({em,compN,del})=>{
                     <div>{compN}</div>
                     <div>{em.email}</div>
                     <div>{em.phone_number}</div>
-                    <div><a className="btn btn-primary">Edit</a></div>
+                    <div><NavLink to={`/employees/edit/${em.id}`} className="btn btn-primary">Edit</NavLink></div>
                     <div><button onClick={()=>{del(em.id)}} className="btn btn-danger">Delete</button></div>
 
                 </div>

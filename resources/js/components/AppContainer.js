@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import AddCompany from "./companies/formCompany";
 import editComapany from "./companies/editCompany";
 import AddEmploee from "./employees/FormEmploee"
-
+import editEmployee from "./employees/EditEmployee"
 
 
 
@@ -23,6 +23,7 @@ const AppContainer =()=>{
                 <Route path='/comopany/add' component={AddCompany}/>
                 <Route path='/employees/add' component={AddEmploee}/>
                 <Route path='/company/edit/:companyId' component={editComapany}/>
+                <Route path='/employees/edit/:employeeId' component={editEmployee}/>
             </Container>
 
         </Router>

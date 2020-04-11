@@ -55,6 +55,12 @@ export const employeeApi={
     delete(id){
 
         return axios.delete(`${baseUrl}/employees/${id}`).then(response=> console.log("responce data", response))
-    }
+    },
+
+    edit(id,data){
+        console.log("editDatainApi",data)
+        return axios.put(`/api/employees/${id}`,data).then(res=>console.log("res edit",res))
+
+    },
 
 }

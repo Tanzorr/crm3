@@ -1,7 +1,8 @@
 import {companiesApi, employeeApi} from "../api/api";
 import {getCompanies} from "./companyReducer";
 
-const SET_EMPLOYEE='SET_EMPLOYEE'
+const SET_EMPLOYEES='SET_EMPLOYEES'
+const SET_EMPLOYEE = "SET_EMPLOYEE"
 
 
 const initialState= {
@@ -19,12 +20,24 @@ const initialState= {
 
 
 const employeeReducer=(state=initialState, action)=>{
+    console.log("emmploeyAC", action)
     switch (action.type) {
-        case SET_EMPLOYEE:
+        case SET_EMPLOYEES:
             return {
                 ...state,
                 employees: action.employees
             }
+        case SET_EMPLOYEE:
+            return {
+                ...state,
+                employee: state.employees.filter((e)=>{
+                    if(e.id ==action.employeeId){
+                        return e
+                    }
+                })
+
+            }
+
 
         default:
             return state
@@ -34,8 +47,15 @@ const employeeReducer=(state=initialState, action)=>{
 
 const setEmployeesAC =(employees,)=>{
     return{
-        type:SET_EMPLOYEE,
+        type:SET_EMPLOYEES,
         employees
+    }
+}
+
+const setEmployeeAC =(id)=>{
+    return {
+        type:SET_EMPLOYEE,
+        employeeId:id
     }
 }
 
@@ -43,7 +63,6 @@ const setEmployeesAC =(employees,)=>{
 export const getEmployees =()=>{
     return async (dispatch)=>{
         let data = await employeeApi.getAll()
-        console.log("Employees data",data)
         dispatch(setEmployeesAC(data))
     }
 }
@@ -52,6 +71,13 @@ export const addEmploee = (data)=>{
     return async (dispatch)=>{
         await employeeApi.add(data)
         getEmployees()
+    }
+}
+
+export const getSingleEmployee =(id)=>{
+
+    return async (dispatch)=>{
+        dispatch(setEmployeeAC(id))
     }
 }
 
